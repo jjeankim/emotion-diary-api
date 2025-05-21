@@ -1,0 +1,28 @@
+GET http://localhost:4000/diary
+
+###
+
+GET http://localhost:4000/diary/2
+
+###
+
+POST http://localhost:4000/diary
+Content-Type: application/json
+
+{
+  "title": "새로운 일기 추가",
+  "content" : "새로운 일기를 추가 중입니다."
+}
+
+###
+
+PATCH http://localhost:4000/diary/1
+Content-Type: application/json
+
+{
+  "title": "제목 수정하기"
+}
+
+###
+
+DELETE http://localhost:4000/diary/1

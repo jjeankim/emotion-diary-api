@@ -2,13 +2,18 @@ import express from "express";
 import mongoose from "mongoose";
 import Diary from "./models/Diary.js";
 import { asyncHandler } from "./utils/asyncHandler.js";
+import cors from 'cors';
 import * as dotenv from 'dotenv';
 dotenv.config()
-
 
 mongoose.connect(process.env.DATABASE_URL).then(() => console.log("Connected to DB"));
 const app = express();
 
+const corsOptions = {
+  origin: ['http://127.0.0.1:4000']
+}
+
+app.use(cors(corsOptions));
 //req바디를 json객체로 변환
 app.use(express.json());
 

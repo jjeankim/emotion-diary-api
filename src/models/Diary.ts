@@ -1,5 +1,12 @@
 import mongoose from "mongoose";
 
+export interface IDiary extends Document {
+  content: string;
+  emotionId: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 const DiarySchema = new mongoose.Schema(
   {
     content: {
@@ -17,6 +24,6 @@ const DiarySchema = new mongoose.Schema(
   }
 );
 
-const Diary = mongoose.model("Diary", DiarySchema);
+const Diary = mongoose.model<IDiary>("Diary", DiarySchema);
 
 export default Diary;

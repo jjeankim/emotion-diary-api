@@ -2,7 +2,7 @@ GET http://localhost:4000/diary
 
 ###
 
-GET http://localhost:4000/diary/682d6cf06513fe180b5b7215
+GET http://localhost:4000/diary/682dcc0fceb48da0c543a4d5
 
 ###
 
@@ -16,13 +16,13 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:4000/diary/682d6cf06513fe180b5b7215
+PATCH http://localhost:4000/diary/682dcc0fceb48da0c543a4d5
 Content-Type: application/json
 
 {
-  "title": "패치도 디비 연결결"
+  "content": "패치도 디비 연결결"
 }
 
 ###
 
-DELETE http://localhost:4000/diary/682d6cf06513fe180b5b7215
+DELETE http://localhost:4000/diary/682dd4bb1208b65c68a3b25e

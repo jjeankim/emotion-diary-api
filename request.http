@@ -2,7 +2,7 @@ GET http://localhost:4000/diary
 
 ###
 
-GET http://localhost:4000/diary/2
+GET http://localhost:4000/diary/682d6cf06513fe180b5b7214
 
 ###
 
@@ -10,8 +10,8 @@ POST http://localhost:4000/diary
 Content-Type: application/json
 
 {
-  "title": "새로운 일기 추가",
-  "content" : "새로운 일기를 추가 중입니다."
+  "title": "이제 마지막 시간",
+  "content" : "데이터베이스에 일기 추가하기 츄라이~츄라이~"
 }
 
 ###

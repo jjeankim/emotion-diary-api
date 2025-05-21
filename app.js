@@ -2,6 +2,7 @@ import express from "express";
 import diaryList from "./data/mock.js";
 import mongoose from "mongoose";
 import { DATABASE_URL } from "./env.js";
+import Diary from "./models/Diary.js";
 
 
 mongoose.connect(DATABASE_URL).then(() => console.log('Connected to DB'))
@@ -10,17 +11,17 @@ const app = express();
 //req바디를 json객체로 변환
 app.use(express.json());
 
-app.get("/diary", (req, res) => {
-  res.send(diaryList);
+//find() DB data 모두 가져오기
+app.get("/diary", async (req, res) => {
+  const diary = await Diary.find()
+  res.send(diary);
 });
 
-app.get("/diary/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const diaryItem = diaryList.find((diary) => diary.id === id);
-  if (diaryItem) res.send(diaryItem);
-  else {
-    res.status(404).send({ message: "Cannot find given id." });
-  }
+//findById() DB data에서 해당 id data만 가져오기
+app.get("/diary/:id", async (req, res) => {
+  const id = req.params.id;
+  const diaryItem = await Diary.findById(id)
+  if(diaryItem) res.send(diaryItem)
 });
 
 const getNextId = (arr) => {
@@ -28,17 +29,15 @@ const getNextId = (arr) => {
   return Math.max(...ids) + 1;
 };
 
-app.post("/diary", (req, res) => {
-  const newDiary = req.body;
-  newDiary.id = getNextId(diaryList);
-  newDiary.createdAt = new Date();
-  newDiary.updatedAt = new Date();
-  diaryList.push(newDiary);
-  res.status(201).send(newDiary);
+//create()새로 생성하기
+app.post("/diary", async (req, res) => {
+  const newDiary = await Diary.create(req.body)
+  res.status(201).send(newDiary)
 });
 
+//
 app.patch("/diary/:id", (req, res) => {
-  const id = Number(req.params.id);
+  const id = req.params.id;
   const diaryItem = diaryList.find((diary) => diary.id === id);
   if (diaryItem) {
     Object.keys(req.body).forEach((key) => {
@@ -52,7 +51,7 @@ app.patch("/diary/:id", (req, res) => {
 });
 
 app.delete("/diary/:id",(req,res) => {
-  const id = Number(req.params.id)
+  const id = req.params.id
   const idx = diaryList.findIndex(item => item.id === id)
   if (idx >= 0) {
     diaryList.splice(idx, 1)

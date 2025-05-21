@@ -1,9 +1,10 @@
 import express from "express";
-import diaryList from "./mock.js";
+import diaryList from "./data/mock.js";
 import mongoose from "mongoose";
+import { DATABASE_URL } from "./env.js";
 
 
-mongoose.connect(DATABASE_BASE).then(() => console.log('Connected to DB'))
+mongoose.connect(DATABASE_URL).then(() => console.log('Connected to DB'))
 const app = express();
 
 //req바디를 json객체로 변환

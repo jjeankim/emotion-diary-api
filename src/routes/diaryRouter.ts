@@ -1,6 +1,6 @@
 import express from "express";
 import Diary, { IDiary } from "../models/Diary";
-import { asyncHandler } from "../utils/asyncHandler.js"
+import { asyncHandler } from "../utils/asyncHandler"
 const diaryRouter = express.Router()
 
 diaryRouter.get(
@@ -51,6 +51,7 @@ diaryRouter.patch(
 diaryRouter.delete(
   "/:id",
   asyncHandler(async (req, res) => {
+    console.log("도달달")
     const id = req.params.id;
     const diaryItem = await Diary.findByIdAndDelete(id);
     if (diaryItem) {

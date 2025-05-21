@@ -14,25 +14,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const Diary_1 = __importDefault(require("../models/Diary"));
-const asyncHandler_js_1 = require("../utils/asyncHandler.js");
+const asyncHandler_1 = require("../utils/asyncHandler");
 const diaryRouter = express_1.default.Router();
-diaryRouter.get("/", (0, asyncHandler_js_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+diaryRouter.get("/", (0, asyncHandler_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const diary = yield Diary_1.default.find();
     res.send(diary);
 })));
-diaryRouter.get("/:id", (0, asyncHandler_js_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+diaryRouter.get("/:id", (0, asyncHandler_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
     const diaryItem = yield Diary_1.default.findById(id);
     if (diaryItem)
         res.send(diaryItem);
 })));
 //create()새로 생성하기
-diaryRouter.post("/", (0, asyncHandler_js_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+diaryRouter.post("/", (0, asyncHandler_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const newDiary = yield Diary_1.default.create(req.body);
     res.status(201).send(newDiary);
 })));
 //findById()와 save()메소드를 사용해서 찾고, 저장해야 유효성 검사 가능능
-diaryRouter.patch("/:id", (0, asyncHandler_js_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+diaryRouter.patch("/:id", (0, asyncHandler_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
     const diaryItem = yield Diary_1.default.findById(id);
     if (diaryItem) {
@@ -47,7 +47,8 @@ diaryRouter.patch("/:id", (0, asyncHandler_js_1.asyncHandler)((req, res) => __aw
         res.status(404).send({ message: "Cannot find given id" });
     }
 })));
-diaryRouter.delete("/diary/:id", (0, asyncHandler_js_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+diaryRouter.delete("/:id", (0, asyncHandler_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("도달달");
     const id = req.params.id;
     const diaryItem = yield Diary_1.default.findByIdAndDelete(id);
     if (diaryItem) {

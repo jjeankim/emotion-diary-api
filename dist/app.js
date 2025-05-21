@@ -40,15 +40,17 @@ const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv = __importStar(require("dotenv"));
-const diaryRouter_js_1 = __importDefault(require("./routes/diaryRouter.js"));
+const diaryRouter_1 = __importDefault(require("./routes/diaryRouter"));
 dotenv.config();
-mongoose_1.default.connect(process.env.DATABASE_URL).then(() => console.log("Connected to DB"));
+mongoose_1.default
+    .connect(process.env.DATABASE_URL)
+    .then(() => console.log("Connected to DB"));
 const app = (0, express_1.default)();
 const corsOptions = {
-    origin: ['http://127.0.0.1:4000']
+    origin: ["http://127.0.0.1:4000"],
 };
 app.use((0, cors_1.default)(corsOptions));
 //req바디를 json객체로 변환
 app.use(express_1.default.json());
-app.use('/diary', diaryRouter_js_1.default);
+app.use("/diary", diaryRouter_1.default);
 app.listen(process.env.PORT || 4000, () => console.log("Server Started!"));

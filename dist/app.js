@@ -47,7 +47,7 @@ mongoose_1.default
     .then(() => console.log("Connected to DB"));
 const app = (0, express_1.default)();
 const corsOptions = {
-    origin: ["http://127.0.0.1:4000"],
+    origin: ["http://localhost:3000"],
 };
 app.use((0, cors_1.default)(corsOptions));
 //req바디를 json객체로 변환

@@ -47,7 +47,7 @@ mongoose_1.default
     .then(() => console.log("Connected to DB"));
 const app = (0, express_1.default)();
 const corsOptions = {
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://emotion-diary-jjeankim.netlify.app"],
 };
 app.use((0, cors_1.default)(corsOptions));
 //req바디를 json객체로 변환

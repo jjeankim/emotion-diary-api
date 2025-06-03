@@ -18,6 +18,6 @@ app.use(cors(corsOptions));
 //req바디를 json객체로 변환
 app.use(express.json());
 
-app.use("/diary", diaryRouter);
+app.use("/diaries", diaryRouter);
 
 app.listen(process.env.PORT || 4000, () => console.log("Server Started!"));

@@ -1,7 +1,5 @@
 # ✏️ Emotion Diary API Server
 
-감정 일기를 작성할 수 있는 ✏️ Emotion Diary API Server
-
 감정 일기를 작성할 수 있는 앱의 백엔드 API 서버입니다.
 MongoDB와 Express를 기반으로 API를 제공합니다.
 

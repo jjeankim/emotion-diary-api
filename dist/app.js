@@ -52,5 +52,5 @@ const corsOptions = {
 app.use((0, cors_1.default)(corsOptions));
 //req바디를 json객체로 변환
 app.use(express_1.default.json());
-app.use("/diary", diaryRouter_1.default);
+app.use("/diaries", diaryRouter_1.default);
 app.listen(process.env.PORT || 4000, () => console.log("Server Started!"));

@@ -48,7 +48,6 @@ diaryRouter.patch("/:id", (0, asyncHandler_1.asyncHandler)((req, res) => __await
     }
 })));
 diaryRouter.delete("/:id", (0, asyncHandler_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("도달달");
     const id = req.params.id;
     const diaryItem = yield Diary_1.default.findByIdAndDelete(id);
     if (diaryItem) {
